@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+
+.git
+.gitignore
+*.md
+dist
+
+/.cache
+/build
+
+.DS_Store
+*.tar.gz

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>ZByAI Search</ShortName>
+  <Description>ZbyAI enhances your search with AI for deeper insights and more relevant results. Experience unparalleled accuracy and discover the web's wisdom.</Description>
+  <Contact>hi@zbyai.com</Contact>
+  <Image height="32" width="32" type="image/x-icon">
+    https://www.zbyai.com/favicon.ico
+  </Image>
+  <Url type="text/html"
+       template="http://www.zbyai.com/search?q={searchTerms}"/>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <InputEncoding>UTF-8</InputEncoding>
+  <moz:SearchForm>https://www.zbyai.com</moz:SearchForm>
+</OpenSearchDescription>

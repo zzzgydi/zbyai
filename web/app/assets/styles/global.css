@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --main-50: #ebe8f1;
+    --main-200: #502eb0;
+    --main-500: #502eb0;
+
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark,
+  :root[class~="dark"] {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+::selection {
+  @apply bg-violet-200;
+}
+
+.markdown-body pre code::selection {
+  @apply bg-violet-600;
+}
+
+.dark ::selection {
+  @apply bg-violet-600;
+}
+
+.zbyai-text {
+  position: relative;
+  /* font-weight: 300; */
+  display: inline-block;
+  /* transform: scale(1.12, 1.12); */
+  letter-spacing: 4px;
+  /* font-size: 78px; */
+  user-select: none;
+  /* color: var(--main-500); */
+  color: hsl(var(--primary));
+}
+
+.page-loader {
+  height: 4px;
+  width: 100%;
+  --c: no-repeat linear-gradient(#a78bfa 0 0);
+  background: var(--c), var(--c), #c4b5fd;
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+}
+@keyframes l16 {
+  0% {
+    background-position: -150% 0, -150% 0;
+  }
+  66% {
+    background-position: 250% 0, -150% 0;
+  }
+  100% {
+    background-position: 250% 0, 250% 0;
+  }
+}
+
+.main-loader::before {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 4px);
+  content: "";
+  height: 3px;
+  background: repeating-linear-gradient(
+      90deg,
+      var(--main-500) 0 calc(25% - 5px),
+      #0000 0 25%
+    )
+    left/calc(4 * 100%/3) 100%;
+  animation: l3 0.5s infinite linear reverse;
+}
+
+@keyframes l3 {
+  to {
+    background-position: right;
+  }
+}
+
+.second-loader {
+  width: 24px;
+  height: 24px;
+  border: 2px solid hsl(var(--muted-foreground));
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.second-loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: var(--main-200) transparent;
+}
+
+.dark .second-loader::after {
+  border-color: var(--main-500) transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.thread-mask {
+  height: 125px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    hsla(var(--background) / 1)
+  );
+}
+
+.thread-shadow {
+  box-shadow: 0 1px 4px 0px rgb(0 0 0 / 0.16);
+}
+
+.input-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.input-scrollbar::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground));
+  border-radius: 10px;
+}
+.input-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* box */
+.box-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.box-scrollbar::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted));
+  border-radius: 10px;
+}
+.box-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground));
+  border-radius: 10px;
+}
+.box-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
