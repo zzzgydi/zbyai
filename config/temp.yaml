@@ -1,0 +1,34 @@
+http_port: 14090
+jwt_secret: "jwt_secret"
+gpt:
+  endpoint: "https://api.openai.com/v1"
+  api_key: ""
+  proxy_url: ""
+search:
+  github:
+    tokens:
+      - ""
+  serper:
+    endpoint: "https://google.serper.dev/search"
+    api_key: ""
+  bing:
+    endpoint: "https://api.bing.microsoft.com/v7.0/search"
+    api_key: ""
+  searxng:
+    endpoint: ""
+redis:
+  url:
+  port: 6379
+  password:
+mysql:
+  host: ""
+  port: 3306
+  user: ""
+  password: ""
+  db_name: ""
+  slow_threshold: 200
+  auto_migrate: false
+supabase:
+  url: ""
+  key: ""
+  jwt_secret: ""

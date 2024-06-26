@@ -1,0 +1,8 @@
+config/dev.yaml
+config/test.yaml
+config/prod.yaml
+.DS_Store
+output
+*.tar.gz
+
+deploy.sh
