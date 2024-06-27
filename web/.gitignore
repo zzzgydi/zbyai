@@ -5,7 +5,3 @@ node_modules
 .env
 
 *.tar.gz
-
-pnpm-lock.yaml
-yarn.lock
-package-lock.json
