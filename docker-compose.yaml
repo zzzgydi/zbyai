@@ -1,0 +1,25 @@
+services:
+  zbyai-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '14090:14090'
+    networks:
+      - zbyai
+    restart: unless-stopped
+
+  zbyai-remix:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    depends_on:
+      - zbyai-api
+    ports:
+      - '3000:3000'
+    networks:
+      - zbyai
+    restart: unless-stopped
+
+networks:
+  zbyai:
