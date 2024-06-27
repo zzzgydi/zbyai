@@ -73,6 +73,7 @@ Users can easily deploy ZByAI using Docker. The following components are require
    - Build the frontend Docker image:
      ```bash
      cd web
+     pnpm install --lockfile-only
      docker build -t zbyai-remix .
      ```
 
