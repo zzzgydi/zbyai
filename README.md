@@ -64,17 +64,11 @@ Users can easily deploy ZByAI using Docker. The following components are require
 
    - Copy `web/.env.example` to `web/.env` and fill in the required environment variables.
 
-4. Build Docker Images:
-
-   - Build the backend Docker image:
-     ```bash
-     docker build -t zbyai-api .
-     ```
-   - Build the frontend Docker image:
-     ```bash
-     cd web
-     docker build -t zbyai-remix .
-     ```
+4. Build Docker Images and Start Containers:
+   
+   ```bash
+   docker compose up -d
+   ``` 
 
 ## License
 
