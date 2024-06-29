@@ -61,7 +61,7 @@ func peSearchJudge(query string, history []openai.ChatCompletionMessage, logger 
 		return nil, fmt.Errorf("judge parse json error: %w", err)
 	}
 
-	res.Model = llmClient.Model
+	res.Model = llmClient.Display
 
 	return res, nil
 }

@@ -32,3 +32,30 @@ supabase:
   url: ""
   key: ""
   jwt_secret: ""
+
+# Chat Models and Weights
+chat_models:
+  - model: "deepseek/deepseek-chat"
+    display: "deepseek-chat"
+    weight: 2
+  - model: "openai/gpt-3.5-turbo"
+    display: "gpt-3.5-turbo"
+  - model: "cohere/command-r"
+    display: "command-r"
+  - model: "anthropic/claude-3-haiku"
+    display: "claude-3-haiku"
+  - model: "google/gemini-flash-1.5"
+    display: "gemini-flash-1.5"
+
+# Rewrite Models and Weights
+rewrite_models:
+  - model: "deepseek/deepseek-chat"
+    display: "deepseek-chat"
+  - model: "openai/gpt-3.5-turbo"
+    display: "gpt-3.5-turbo"
+  - model: "cohere/command-r"
+    display: "command-r"
+  - model: "anthropic/claude-3-haiku"
+    display: "claude-3-haiku"
+  - model: "google/gemini-flash-1.5"
+    display: "gemini-flash-1.5"

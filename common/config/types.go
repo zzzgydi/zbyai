@@ -1,14 +1,16 @@
 package config
 
 type AppConfig struct {
-	HttpPort  int            `yaml:"http_port"`
-	JwtSecret string         `yaml:"jwt_secret"`
-	Search    SearchConfig   `yaml:"search"`
-	Gpt       GPTConfig      `yaml:"gpt"`
-	Redis     RedisConfig    `yaml:"redis"`
-	Postgres  PostgresConfig `yaml:"postgres"`
-	Mysql     MysqlConfig    `yaml:"mysql"`
-	Supabase  SupabaseConfig `yaml:"supabase"`
+	HttpPort      int            `yaml:"http_port"`
+	JwtSecret     string         `yaml:"jwt_secret"`
+	Search        SearchConfig   `yaml:"search"`
+	Gpt           GPTConfig      `yaml:"gpt"`
+	Redis         RedisConfig    `yaml:"redis"`
+	Postgres      PostgresConfig `yaml:"postgres"`
+	Mysql         MysqlConfig    `yaml:"mysql"`
+	Supabase      SupabaseConfig `yaml:"supabase"`
+	ChatModels    []ModelConfig  `yaml:"chat_models"`
+	RewriteModels []ModelConfig  `yaml:"rewrite_models"`
 }
 
 type GPTConfig struct {
@@ -64,4 +66,10 @@ type SupabaseConfig struct {
 	Url       string `yaml:"url"`
 	Key       string `yaml:"key"`
 	JwtSecret string `yaml:"jwt_secret"`
+}
+
+type ModelConfig struct {
+	Model   string `yaml:"model"`             // model value for provider
+	Display string `yaml:"display,omitempty"` // display model name
+	Weight  int    `yaml:"weight,omitempty"`
 }

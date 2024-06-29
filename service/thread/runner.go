@@ -223,7 +223,7 @@ func (t *ThreadRunner) runLLM() {
 		Id:        xid.New().String(),
 		Key:       model.AnswerKeyMain,
 		Status:    model.AnswerInit,
-		Model:     llmClient.Model,
+		Model:     llmClient.Display,
 		Content:   "",
 		CreatedAt: time.Now(),
 	}
