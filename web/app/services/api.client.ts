@@ -118,28 +118,40 @@ async function streamThreadInner(
   if (!reader) throw new Error("No reader");
 
   let finish = false;
+  let buffer = "";
   while (true) {
     const { value, done } = await reader.read();
     if (done) break;
-    if (!value.startsWith("data: ")) continue;
-    const newValue = value.slice(6);
-    for (const line of newValue.split("\n\ndata: ")) {
-      try {
-        const data = JSON.parse(line) as any;
-        if (data.type === "query") handler.onQuery?.(data.data);
-        else if (data.type === "setting") handler.onSetting?.(data.data);
-        else if (data.type === "search") handler.onSearch?.(data.data);
-        else if (data.type === "answer") handler.onAnswer?.(data.data);
-        else if (data.type === "error") {
-          finish = true;
-          handler.onError?.(data.data?.errMsg || "unknown error");
-        } else if (data.type === "done") {
-          finish = true;
-          handler.onDone?.();
-        } else console.error("Unknown type", data);
-      } catch (error) {
-        console.error("Error parsing JSON", line, error);
+
+    buffer += value;
+    let boundary = buffer.indexOf("\n\n");
+
+    while (boundary !== -1) {
+      const line = buffer.slice(0, boundary).trim();
+      buffer = buffer.slice(boundary + 2);
+
+      if (line.startsWith("data: ")) {
+        const newValue = line.slice(6);
+        try {
+          const data = JSON.parse(newValue);
+          if (data.type === "query") handler.onQuery?.(data.data);
+          else if (data.type === "setting") handler.onSetting?.(data.data);
+          else if (data.type === "search") handler.onSearch?.(data.data);
+          else if (data.type === "answer") handler.onAnswer?.(data.data);
+          else if (data.type === "error") {
+            finish = true;
+            handler.onError?.(data.data?.errMsg || "unknown error");
+          } else if (data.type === "done") {
+            finish = true;
+            handler.onDone?.();
+          } else console.error("Unknown type", data);
+        } catch (error) {
+          console.error("Error parsing JSON", newValue);
+          console.error(error);
+        }
       }
+
+      boundary = buffer.indexOf("\n\n");
     }
   }
   return finish;
